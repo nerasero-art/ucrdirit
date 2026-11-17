@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Timeline interattiva della storia dell'Ucraina, dalla Rus' di Kiev all'età contemporanea, con collegamenti alle materie scolastiche.">
+  <title>Storia dell'Ucraina — Timeline interattiva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="hero__kicker">Timeline storica interattiva</p>
+      <h1 class="hero__title">Storia dell'<span>Ucraina</span></h1>
+      <p class="hero__subtitle">I passaggi fondamentali dalla Rus' di Kiev a oggi, con la storia dei Cosacchi e i collegamenti a Diritto, Economia politica, Italiano, Inglese, Matematica e Informatica.</p>
+    </div>
+  </header>
+
+  <div class="search-bar" id="searchBar">
+    <div class="search-bar__inner">
+      <form class="search" role="search" onsubmit="return false;">
+        <label for="searchInput" class="visually-hidden">Cerca tra date, eventi e materie</label>
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+        <input
+          type="search"
+          id="searchInput"
+          class="search__input"
+          placeholder="Cerca una data, un evento o una materia…"
+          autocomplete="off"
+          spellcheck="false">
+        <kbd class="search__hint" aria-hidden="true">/</kbd>
+        <button type="button" class="search__clear" id="clearBtn" aria-label="Cancella la ricerca" hidden>&times;</button>
+      </form>
+
+      <div class="filter-row">
+        <span class="filter-row__label">Periodo</span>
+        <div class="filters" id="eraFilters" role="group" aria-label="Filtra per periodo storico">
+          <button type="button" class="chip is-active" data-era="tutti">Tutti</button>
+          <button type="button" class="chip" data-era="medioevo">Medioevo</button>
+          <button type="button" class="chip" data-era="moderna">Età moderna</button>
+          <button type="button" class="chip" data-era="ottocento">Ottocento</button>
+          <button type="button" class="chip" data-era="novecento">Novecento</button>
+          <button type="button" class="chip" data-era="contemporanea">Ucraina indipendente</button>
+          <button type="button" class="chip chip--cossack" data-era="cosacchi">&#9876; Cosacchi</button>
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-row__label">Materia</span>
+        <div class="filters" id="subjectFilters" role="group" aria-label="Filtra per materia scolastica"></div>
+      </div>
+
+      <p class="search-status" id="searchStatus" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <main class="timeline-section">
+    <div class="timeline-nav">
+      <button type="button" class="nav-btn" id="prevBtn" aria-label="Eventi precedenti">&#8592;</button>
+      <div class="timeline-progress" aria-hidden="true"><span id="progress"></span></div>
+      <button type="button" class="nav-btn" id="nextBtn" aria-label="Eventi successivi">&#8594;</button>
+    </div>
+
+    <div class="track" id="track" tabindex="0" aria-label="Timeline degli eventi: scorri da sinistra a destra">
+      <div class="track__inner" id="timeline"></div>
+    </div>
+
+    <p class="scroll-hint" id="scrollHint">Scorri verso destra per andare avanti nel tempo &#8594;</p>
+
+    <div class="empty" id="emptyState" hidden>
+      <p class="empty__title">Nessun evento trovato</p>
+      <p class="empty__text">Prova con un'altra parola chiave, un anno o una materia, ad esempio <button type="button" class="link-btn" data-suggest="Kiev">Kiev</button>, <button type="button" class="link-btn" data-suggest="1986">1986</button> o <button type="button" class="link-btn" data-suggest="costituzione">costituzione</button>.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Timeline a scopo didattico sulla storia dell'Ucraina, con collegamenti interdisciplinari.</p>
+    <p class="footer__small">Immagini: Wikimedia Commons (autori e licenze indicati sotto ogni foto). Le cifre sulle vittime e sulla popolazione sono stime degli storici. Tasti rapidi: <kbd>/</kbd> per cercare, <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> per scorrere la timeline.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
